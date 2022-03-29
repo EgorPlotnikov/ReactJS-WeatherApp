@@ -13,8 +13,9 @@ class App extends React.Component {
 		country: undefined,
 		pressure: undefined,
 		sunset: undefined,
-		error: undefined
-
+		error: undefined,
+		feels_like: undefined,
+		humidity: undefined
 	}
 
 	gettingWeather = async (e) => {
@@ -39,7 +40,9 @@ class App extends React.Component {
 			country: data.sys.country,
 			pressure: data.main.pressure,
 			sunset: sunset_date,
-			error: undefined
+			error: undefined,
+			feels_like: data.main.feels_like,
+			humidity: data.main.humidity
 			});
 		} else {
 			this.setState({
@@ -48,7 +51,9 @@ class App extends React.Component {
 			country: undefined,
 			pressure: undefined,
 			sunset: undefined,
-			error: "Введите название города"
+			error: "Search City",
+			feels_like: undefined,
+			humidity: undefined
 			});
 		}
 	}
@@ -73,6 +78,8 @@ class App extends React.Component {
 									pressure = {this.state.pressure}
 									sunset = {this.state.sunset}
 									error = {this.state.error}
+									feels_like = {this.state.feels_like}
+									humidity = {this.state.humidity}
 								/>
 							</div>
 						</div>

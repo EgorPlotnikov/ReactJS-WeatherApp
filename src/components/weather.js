@@ -5,13 +5,15 @@ const Weather = (props) => {
 		<div className="infoWeather">
 			{ props.city &&
 				<div>
-					<p> Местоположение: {props.city}, {props.country}</p>
-					<p> Температура: {props.temp} </p>
-					<p> Давление: {props.pressure}</p>
-					<p> Заход солнца: {props.sunset}</p>
+					<p> Location: {props.city}, {props.country}</p>
+					<p> Temperature: {props.temp} °C</p>
+					<p> Feels like: {props.feels_like}</p>
+					<p> Air pressure: {props.pressure} millibars</p>
+					<p> Humidity: {props.humidity} %</p>
+					<p> Sunset: {props.sunset}</p>
 				</div>
 			}
-			<p className="error">{ props.error }</p>
+			<p className="error">{props.error}</p>
 			</div>
 		);
 }
