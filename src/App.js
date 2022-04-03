@@ -9,13 +9,10 @@ class App extends React.Component {
 
 	state = {
 		temp: undefined,
+		description: undefined,
+		wind: undefined,
 		city: undefined,
-		country: undefined,
-		pressure: undefined,
-		sunset: undefined,
-		error: undefined,
-		feels_like: undefined,
-		humidity: undefined
+		error: undefined
 	}
 
 	gettingWeather = async (e) => {
@@ -23,37 +20,29 @@ class App extends React.Component {
 		const city = e.target.elements.city.value;
 		
 		
-		if(city){
-
+		if(city)
+		{
 		const api_url = await
 		fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric` );
 		const data = await api_url.json();
-
-		var sunset = data.sys.sunset;
-		var date = new Date();
-		date.setTime(sunset);
-		var sunset_date =date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+		console.log(data);
 
 		this.setState({
-			temp: data.main.temp,
+			temp: Math.round(data.main.temp),
+			description: data.weather[0].description,
+			wind: Math.round(data.wind.speed),
 			city: data.name,
-			country: data.sys.country,
-			pressure: data.main.pressure,
-			sunset: sunset_date,
-			error: undefined,
-			feels_like: data.main.feels_like,
-			humidity: data.main.humidity
+			error: undefined
 			});
-		} else {
+		}
+		else
+		{
 			this.setState({
 			temp: undefined,
+			description: undefined,
+			wind: undefined,
 			city: undefined,
-			country: undefined,
-			pressure: undefined,
-			sunset: undefined,
-			error: "Search City",
-			feels_like: undefined,
-			humidity: undefined
+			error: "Search City"
 			});
 		}
 	}
@@ -66,20 +55,14 @@ class App extends React.Component {
 				<div className="main">
 					<div className="container">
 						<div className="row">
-							<div className="col-sm-5 info">
-								<Info />
-							</div>
-							<div className="col-sm-7 form">
+							<div className="form">
 								<Form  weatherMethod = {this.gettingWeather} />
 								<Weather
 									temp = {this.state.temp}
+									description = {this.state.description}
+									wind = {this.state.wind}
 									city = {this.state.city}
-									country = {this.state.country}
-									pressure = {this.state.pressure}
-									sunset = {this.state.sunset}
 									error = {this.state.error}
-									feels_like = {this.state.feels_like}
-									humidity = {this.state.humidity}
 								/>
 							</div>
 						</div>

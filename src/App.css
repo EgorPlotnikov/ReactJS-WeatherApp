@@ -9,107 +9,110 @@ body {
   display:flex;
   justify-content: center;
   align-items: center;
-
-background: rgba(73,155,234,1);
-background: -moz-linear-gradient(-45deg, rgba(73,155,234,1) 0%, rgba(73,155,234,1) 34%, rgba(135,206,250,1) 100%);
-background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(73,155,234,1)), color-stop(34%, rgba(73,155,234,1)), color-stop(100%, rgba(135,206,250,1)));
-background: -webkit-linear-gradient(-45deg, rgba(73,155,234,1) 0%, rgba(73,155,234,1) 34%, rgba(135,206,250,1) 100%);
-background: -o-linear-gradient(-45deg, rgba(73,155,234,1) 0%, rgba(73,155,234,1) 34%, rgba(135,206,250,1) 100%);
-background: -ms-linear-gradient(-45deg, rgba(73,155,234,1) 0%, rgba(73,155,234,1) 34%, rgba(135,206,250,1) 100%);
-background: linear-gradient(135deg, rgba(73,155,234,1) 0%, rgba(73,155,234,1) 34%, rgba(135,206,250,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#87cefa', GradientType=1 )
+  background: url("img/background (2).jpg") center center no-repeat;
 }
 
 .main {
   height: 55vh;
-  background: white;
+  background: #625DA0;
   box-shadow: 0px 2px 80px -20px rgba(0,0,0,0.5);
   width: 60%;
   margin: 0 auto;
   border-radius: 25px;
 }
 
-.info {
-  height: 55vh;
-  background: url("img/background.jpg") center center no-repeat;
-  background-blend-mode: multiply;
-  background-color: #484747;
-  border: 2px solid #1f1f1f;
-  border-right: 2px solid #131e29;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #000;
-  border-radius: 25px;
-}
-
 .form {
   height: 55vh;
-  padding-top: 35px;
-  padding-left: 50px;
+  padding-top: 30px;
+  margin: auto;
 }
 
 input[type="text"] {
   background-color: transparent;
-  border: solid 2px #113a65;
-  width: 50%;
+  border: solid 2px #fff;
+  width: 40%;
   padding-bottom: 4px;
   padding-left: 8px;
-  color: #113a65;
   font-weight: normal;
-  margin-bottom: 30px;
-  margin-right: 20px;
+  margin-bottom: 20px;
   font-size: 20px;
   outline: none;
-  border-radius: 10px;
+  border-radius: 15px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
-input::-webkit-input-placeholder {
-  color: #103a65;
+input[type="text"]::-webkit-input-placeholder {
+  color: white;
 }
-
-input::-moz-placeholder {
-  color: #103a65;
+input[type="text"]::-moz-placeholder {
+  color: white;
 }
 
 button {
-  border: 2px solid #103a65;
-  padding: 8px 20px;
-  margin: 0 2px;
-  border-radius: 10px;
+  padding: 4px 10px;
+  border-radius: 15px;
   cursor: pointer;
-  background-color: #235d9c;
+  background-color: #1F1F60;
   color: #ffffff;
-  outline: none!important;
-
-}
-
-button:hover {
   position: relative;
-  background-color: #2a6bb1;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 20px;
 }
 
-.info h1 {
-  color: #ffffff;
-  font-weight: normal;
-  font-size: 3em;
-}
-
-.info h2 {
-  font-size: 2em;
-  color: #fff;
-}
+/*button:hover {*/
+/*  position: relative;*/
+/*  background-color: #2a6bb1;*/
+/*}*/
 
 .infoWeather {
-  width: 70%;
-  font-size: 20px;
-  color: #041f3c;
-  padding-left: 10px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: white;
 }
 
 .error {
   color: #041f3c;
   font-weight: bold;
+}
+
+.textcols {
+  white-space: nowrap;
+  font-size: 0;
+}
+
+.textcols-item {
+  white-space: normal;
+  display: inline-block;
+  width: 30%;
+  vertical-align: top;
+  margin-right: 5%;
+  font-size: 22px;
+  text-align: center;
+  margin-top: 40px;
+  font-weight: 400;
+}
+
+.textcols .textcols-item:last-child {
+  margin-right: 0 ;
+}
+
+.description {
+  margin-top: 40px;
+  font-size: 30px;
+  font-weight: lighter;
+}
+
+.temperature {
+  font-size: 60px;
+  font-weight: lighter;
+}
+
+.wind {
+  margin-top: 40px;
+  font-size: 30px;
+  font-weight: lighter;
 }
