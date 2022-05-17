@@ -1,4 +1,5 @@
 import React from "react";
+import {DebounceInput} from "react-debounce-input";
 
 const Form = (props) => (
 			<form onSubmit = {props.weatherMethod}>
