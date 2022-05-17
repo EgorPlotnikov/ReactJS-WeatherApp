@@ -46,7 +46,7 @@ class App extends React.Component {
 
 	getUserCity = async (e) => {
 		const api_url = await
-		fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${this.state.latitude}&longitude=${this.state.longitude}&localityLanguage=en` );
+			fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${this.state.latitude}&longitude=${this.state.longitude}&localityLanguage=en` );
 		const data = await api_url.json();
 		console.log(data);
 
@@ -54,18 +54,33 @@ class App extends React.Component {
 			userCity: data.city
 		});
 		console.log(this.state.userCity)
-		await this.gettingWeather(e);
+		this.getAutoWeather();
+	}
+
+	getAutoWeather = async (e) => {
+		let city = ""
+		city = this.state.userCity;
+
+		if(city) {
+			const api_url = await
+				fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+			const data = await api_url.json();
+			console.log(data);
+
+			this.setState({
+				temp: Math.round(data.main.temp),
+				description: data.weather[0].description,
+				wind: Math.round(data.wind.speed),
+				city: data.name,
+				error: undefined
+			});
+		}
 	}
 
 	gettingWeather = async (e) => {
 		e.preventDefault()
 		let city = ""
-		if (this.state.userCity == null) {
-			city = e.target.elements.city.value;
-		}
-		else {
-			city = this.state.userCity;
-		}
+		city = e.target.elements.city.value;
 
 		if(city)
 		{
@@ -94,7 +109,9 @@ class App extends React.Component {
 		}
 	}
 
-
+	componentDidMount() {
+		this.getLocation();
+	}
 
 	render() {
 		return (
@@ -104,7 +121,7 @@ class App extends React.Component {
 						<div className="row">
 							<div className="form">
 								<Form  weatherMethod = {this.gettingWeather} />
-								<button onClick={this.getLocation}>Auto</button>
+								{/*<button onClick={this.getLocation}>Auto</button>*/}
 								<Weather
 									temp = {this.state.temp}
 									description = {this.state.description}
